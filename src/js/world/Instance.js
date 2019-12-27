@@ -68,14 +68,7 @@ export class Instance {
     
     removeNpc(index) {
         const npc = this.npcs[index];
-        if (npc.blocksTiles) {
-            for (let y = 0; y < npc.height; y++) {
-                for (let x = 0; x < npc.width; x++) {
-                    delete this.blockedTiles[(npc.x + x) + "," + (npc.y + y)];
-                }
-            }
-        }
-        this.npcs.splice(index, 1);
+        npc.isPendingRemoval = true;
         this.game.renderHandler.needsRedraw = true;
     }
     

@@ -213,7 +213,7 @@ export class RenderHandler {
         drawRect(canvas, cellWidth, npc.x, npc.y, npc.size, npc.size);
         
         // Draw NPC image
-        if (npc.image) {
+        if (!npc.isPendingRemoval && npc.image) {
             drawImage(canvas, cellWidth, npc.image, npc.x, npc.y, npc.size, npc.size);
         }
     }

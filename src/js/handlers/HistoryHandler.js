@@ -52,7 +52,7 @@ export class HistoryHandler {
     _pushOnly() {
         const instance = this.game.instance;
         this.history.push({
-            npcs: instance.npcs.map(v => Object.assign(Object.create(Object.getPrototypeOf(v)), v)),
+            npcs: instance.npcs.map(v => Object.assign(Object.create(Object.getPrototypeOf(v)), v, { isPendingRemoval: false })),
             player: instance.player ? Object.assign(Object.create(Object.getPrototypeOf(instance.player)), instance.player) : null,
             blockedTiles: {...instance.blockedTiles}
         });

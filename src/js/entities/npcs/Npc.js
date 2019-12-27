@@ -10,9 +10,21 @@ export class Npc extends Actor {
         this.spawnY = y;
         this.canBeBlocked = true;
         this.type = null;
+        this.isPendingRemoval = false;
     }
     
     processTick(gameTick) {
+        if (this.isPendingRemoval) {
+            if (this.blocksTiles) {
+                for (let y = 0; y < this.height; y++) {
+                    for (let x = 0; x < this.width; x++) {
+                        delete this.instance.blockedTiles[(this.x + x) + "," + (this.y + y)];
+                    }
+                }
+            }
+            return;
+        }
+        
         if (this.target) {
             if (this.intersectsWith(this.target)) {
                 // TODO: Random walk
