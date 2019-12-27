@@ -8,7 +8,7 @@ import { Lvl702 } from "../entities/npcs/Lvl702";
 export function loadNpcImage(level, game) {
     const image = new Image(128, 128);
     image.onload = () => game.renderHandler.needsRedraw = true;
-    image.src = "/img/" + level + ".png";
+    image.src = "img/" + level + ".png";
     return image;
 }
 
