@@ -35,7 +35,7 @@ module.exports = [
         ],
         output: {
             filename: "[name]-" + version + ".js",
-            path: path.resolve(__dirname, 'build')
+            path: path.resolve(__dirname, 'docs')
         }
     })
 ];
