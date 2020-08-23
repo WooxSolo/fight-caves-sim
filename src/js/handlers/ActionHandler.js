@@ -20,45 +20,43 @@ export class ActionHandler {
         if (!this.currentAction) {
             return;
         }
-        
-        const { mouseX, mouseY } = {...this.game.inputHandler};
-        const cellWidth = this.game.renderHandler.cellWidth;
-        
+
+        const { mouseX, mouseY } = { ...this.game.inputHandler };
         if (mouseX !== null && mouseY !== null) {
-            const canvas = this.game.renderHandler.canvas.current;
-            const gridX = Math.floor(mouseX / cellWidth);
-            const gridY = Math.floor((canvas.height - mouseY) / cellWidth);
-            if (this.currentAction === "placeLvl22") {
-                this.game.instance.addNpc(new Lvl22(this.game.instance, gridX, gridY));
-            }
-            else if (this.currentAction === "placeLvl45") {
-                this.game.instance.addNpc(new Lvl45(this.game.instance, gridX, gridY));
-            }
-            else if (this.currentAction === "placeLvl90") {
-                this.game.instance.addNpc(new Lvl90(this.game.instance, gridX, gridY));
-            }
-            else if (this.currentAction === "placeLvl180") {
-                this.game.instance.addNpc(new Lvl180(this.game.instance, gridX, gridY));
-            }
-            else if (this.currentAction === "placeLvl360") {
-                this.game.instance.addNpc(new Lvl360(this.game.instance, gridX, gridY));
-            }
-            else if (this.currentAction === "placeLvl702") {
-                this.game.instance.addNpc(new Lvl702(this.game.instance, gridX, gridY));
-            }
-            else if (this.currentAction === "placePlayer") {
-                this.game.instance.setPlayer(new Player(this.game.instance, gridX, gridY));
-            }
-            else if (this.currentAction === "play") {
-                if (this.game.instance.player) {
-                    this.game.instance.player.setDestination(gridX, gridY);
-                }
-                else {
+            const gridX = Math.floor(mouseX / his.game.renderHandler.cellWidth);
+            const gridY = Math.floor((this.game.renderHandler.canvas.current.height - mouseY) / his.game.renderHandler.cellWidth);
+            switch (this.currentAction) {
+                case "placeLvl22":
+                    this.game.instance.addNpc(new Lvl22(this.game.instance, gridX, gridY));
+                    break;
+                case "placeLvl45":
+                    this.game.instance.addNpc(new Lvl45(this.game.instance, gridX, gridY));
+                    break;
+                case "placeLvl90":
+                    this.game.instance.addNpc(new Lvl90(this.game.instance, gridX, gridY));
+                    break;
+                case "placeLvl180":
+                    this.game.instance.addNpc(new Lvl180(this.game.instance, gridX, gridY));
+                    break;
+                case "placeLvl360":
+                    this.game.instance.addNpc(new Lvl360(this.game.instance, gridX, gridY));
+                    break;
+                case "placeLvl702":
+                    this.game.instance.addNpc(new Lvl702(this.game.instance, gridX, gridY));
+                    break;
+                case "placePlayer":
                     this.game.instance.setPlayer(new Player(this.game.instance, gridX, gridY));
-                }
+                    break;
+                case "play":
+                    if (this.game.instance.player) {
+                        this.game.instance.player.setDestination(gridX, gridY);
+                    }
+                    else {
+                        this.game.instance.setPlayer(new Player(this.game.instance, gridX, gridY));
+                    }
             }
         }
-        
+
         this.game.renderHandler.needsRedraw = true;
     }
 }
