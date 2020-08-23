@@ -83,15 +83,12 @@ export class Actor {
         const distances = this.getAxisDistancesTo(other);
         return distances.x + distances.y === 0;
     }
+
+    canTravelInDirection(dx,dy){
+        return this.canTravelInDirection(dx,dy,this.x,this.y)
+    }
     
-    canTravelInDirection(dx, dy, startX, startY) {
-        if (startX === undefined) {
-            startX = this.x;
-        }
-        if (startY === undefined) {
-            startY = this.y;
-        }
-        
+    canTravelInDirectionFrom(dx, dy, startX, startY) {
         dx = Math.sign(dx);
         dy = Math.sign(dy);
         
