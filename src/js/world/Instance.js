@@ -27,25 +27,24 @@ export class Instance {
     
     loadNpcs(npcLvls, positions) {
         for (let i = 0; i < npcLvls.length; i++) {
-            const npcLvl = npcLvls[i];
-            const position = positions[i];
-            if (npcLvl === 702) {
-                this.addNpc(new Lvl702(this, position.x, position.y));
-            }
-            else if (npcLvl === 360) {
-                this.addNpc(new Lvl360(this, position.x, position.y));
-            }
-            else if (npcLvl === 180) {
-                this.addNpc(new Lvl180(this, position.x, position.y));
-            }
-            else if (npcLvl === 90) {
-                this.addNpc(new Lvl90(this, position.x, position.y));
-            }
-            else if (npcLvl === 45) {
-                this.addNpc(new Lvl45(this, position.x, position.y));
-            }
-            else if (npcLvl === 22) {
-                this.addNpc(new Lvl22(this, position.x, position.y));
+            switch (npcLvls[i]) {
+                case 702:
+                    this.addNpc(new Lvl702(this, positions[i].x, positions[i].y));
+                    break;
+                case 360:
+                    this.addNpc(new Lvl360(this, positions[i].x, positions[i].y));
+                    break;
+                case 180:
+                    this.addNpc(new Lvl180(this, positions[i].x, positions[i].y));
+                    break;
+                case 90:
+                    this.addNpc(new Lvl90(this, positions[i].x, positions[i].y));
+                    break;
+                case 45:
+                    this.addNpc(new Lvl45(this, positions[i].x, positions[i].y));
+                    break;
+                case 22:
+                    this.addNpc(new Lvl22(this, positions[i].x, positions[i].y));
             }
         }
         
